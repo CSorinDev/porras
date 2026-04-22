@@ -1,16 +1,64 @@
-# React + Vite
+# Porras Entre Amigos 🏆
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma moderna y segura para gestionar tus porras con amigos, de forma rápida y sencilla.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Frontend
+- **React (Vite)**: Interfaz de usuario dinámica y rápida.
+- **React Router**: Gestión de navegación y rutas protegidas.
+- **Tailwind CSS**: Estilado moderno y responsive.
+- **Lucide React**: Iconografía elegante.
 
-## React Compiler
+### Backend
+- **Node.js & Express**: API REST escalable.
+- **Sequelize**: ORM para la gestión de base de datos.
+- **SQLite**: Base de datos ligera para el almacenamiento de datos.
+- **Bcrypt**: Hashing seguro de contraseñas.
+- **JWT (JSON Web Tokens)**: Gestión de sesiones seguras.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🔒 Seguridad Implementada
 
-## Expanding the ESLint configuration
+El proyecto utiliza estándares de seguridad modernos para proteger los datos de los usuarios:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Cookies HttpOnly**: El token de sesión (JWT) se almacena en una cookie `HttpOnly`, lo que impide el acceso desde JavaScript y protege contra ataques XSS.
+- **Double Submit Cookie Pattern**: Implementación de protección contra CSRF (Cross-Site Request Forgery) mediante el uso de tokens cruzados entre cookies y cabeceras personalizadas.
+- **Middleware de Validación**: Validación estricta de tokens y protección de rutas en el servidor.
+
+## 🛠️ Instalación y Uso
+
+### Requisitos previos
+- Node.js (v20 o superior recomendado)
+- pnpm
+
+### Configuración del Backend
+1. Entra en la carpeta `backend/`.
+2. Instala las dependencias: `pnpm install`.
+3. Crea un archivo `.env` basado en las variables necesarias (`PORT`, `CORS_ORIGIN`, `JWT_SECRET`).
+4. Inicia el servidor de desarrollo: `pnpm dev`.
+
+### Configuración del Frontend
+1. En la raíz del proyecto, instala las dependencias: `pnpm install`.
+2. Inicia el cliente de desarrollo: `pnpm dev`.
+
+## 📂 Estructura del Proyecto
+
+```text
+/
+├── backend/            # Lógica del servidor (Express, Sequelize, SQLite)
+│   ├── controllers/    # Controladores de la API
+│   ├── models/         # Modelos de la base de datos
+│   ├── routes/         # Definición de endpoints
+│   └── services/       # Lógica de negocio y utilidades
+├── src/                # Código fuente del Frontend (React)
+│   ├── actions/        # Acciones de React (Formularios, API)
+│   ├── components/     # Componentes reutilizables
+│   ├── contexts/       # Contextos de React (Auth, Theme)
+│   ├── hooks/          # Hooks personalizados
+│   ├── layouts/        # Layouts de página y navegación
+│   └── pages/          # Vistas principales de la aplicación
+└── README.md           # Documentación del proyecto
+```
+
+---
+Desarrollado con ❤️ por [CSorinDev](https://github.com/CSorinDev)
