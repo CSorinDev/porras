@@ -80,7 +80,7 @@
   --accent: #1e293b;
   --accent-foreground: #f8fafc;
   
-  --destructive: #7f1d1d;
+  --destructive: #ca1818;
   --destructive-foreground: #f8fafc;
 
   --border: #1e293b;
@@ -110,7 +110,11 @@ h1 {
 }
 
 .form button {
-  @apply bg-primary py-1 px-2 my-4 rounded-sm text-secondary cursor-pointer hover:bg-primary/80 transition-all duration-300
+  @apply bg-primary py-1 px-2 my-4 rounded-sm text-secondary cursor-pointer hover:bg-primary/80 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary
+}
+
+.form .error {
+  @apply text-destructive bg-destructive/10 mb-2 rounded-sm p-2 text-center text-sm italic font-semibold
 }
 
 .form a {

@@ -3,7 +3,7 @@ import AuthService from '../services/AuthSerivce.js'
 class AuthController {
   static async register(req, res) {
     try {
-      if (req.body)
+      if (!req.body)
         return res
           .status(400)
           .json({ message: 'Todos los campos son obligatorios' })
@@ -16,7 +16,7 @@ class AuthController {
           .json({ message: 'Todos los campos son obligatorios' })
       }
 
-      const user = await AuthService.register(req.body)
+      const user = await AuthService.register(name, email, password)
       if (user)
         return res
           .status(201)
