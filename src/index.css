@@ -95,3 +95,23 @@ body {
 button {
   @apply cursor-pointer;
 }
+
+h1 {
+  @apply text-4xl font-bold mb-12;
+}
+
+.form {
+  @apply grid max-w-xs mx-auto border p-12 box-content rounded-lg border-border shadow-border shadow-md
+}
+
+.form input {
+  @apply outline-0 ring-1 ring-black/30 px-2 py-1 rounded-md focus:ring-primary focus:ring-2 transition-all duration-300 mb-2
+}
+
+.form button {
+  @apply bg-primary py-1 px-2 my-4 rounded-md text-secondary cursor-pointer hover:bg-primary/80 transition-all duration-300
+}
+
+.form a {
+  @apply text-primary font-semibold underline
+}

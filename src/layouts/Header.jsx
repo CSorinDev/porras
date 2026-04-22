@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className="bg-background/80 backdrop-blur-md border-b border-border shadow-sm p-4 fixed top-0 left-0 w-full flex justify-between items-center z-50 transition-colors duration-300">
       <NavLink to="/" className="text-xl font-bold tracking-tight text-primary">
-        <h1>LOGO</h1>
+        <h2>LOGO</h2>
       </NavLink>
       <nav>
         <ul className="flex items-center gap-4">
