@@ -1,50 +1,79 @@
 import { NavLink } from 'react-router'
 import { useTheme } from '../contexts/theme-context'
-import { SunIcon } from 'lucide-react'
-import { MoonIcon } from 'lucide-react'
+import { SunIcon, MoonIcon, LogOut, User } from 'lucide-react'
+import useAuth from '../hooks/useAuth'
 
 export default function Header() {
-  const navLinks = [
-    {
-      title: 'Inicio',
-      path: '/',
-    },
-    {
-      title: 'Iniciar Sesión',
-      path: '/login',
-    },
-  ]
-
+  const { user, logout, isAuthenticated } = useAuth()
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <header className="bg-background/80 backdrop-blur-md border-b border-border shadow-sm p-4 fixed top-0 left-0 w-full flex justify-between items-center z-50 transition-colors duration-300 h-16">
-      <NavLink to="/" className="text-xl font-bold tracking-tighter text-primary">
+    <header className="bg-background/80 border-border fixed top-0 left-0 z-50 flex h-16 w-full items-center justify-between border-b p-4 shadow-sm backdrop-blur-md transition-colors duration-300">
+      <NavLink
+        to="/"
+        className="text-primary text-xl font-bold tracking-tighter"
+      >
         <h2>LOGO</h2>
       </NavLink>
       <nav>
         <ul className="flex items-center gap-4">
-          {navLinks.map(({ title, path }) => (
-            <li key={title}>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                `hover:text-primary relative px-1 py-2 text-sm font-semibold uppercase transition-colors ${
+                  isActive
+                    ? 'text-primary after:w-full'
+                    : 'text-muted-foreground after:w-0'
+                } after:bg-primary after:absolute after:bottom-0 after:left-0 after:h-0.5 after:transition-all after:duration-300`
+              }
+              to="/"
+            >
+              Inicio
+            </NavLink>
+          </li>
+
+          {!isAuthenticated ? (
+            <li>
               <NavLink
                 className={({ isActive }) =>
-                  `relative py-2 px-1 transition-colors hover:text-primary ${
-                    isActive ? 'text-primary after:w-full' : 'text-muted-foreground after:w-0'
-                  } after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 font-semibold uppercase text-sm`
+                  `hover:text-primary relative px-1 py-2 text-sm font-semibold uppercase transition-colors ${
+                    isActive
+                      ? 'text-primary after:w-full'
+                      : 'text-muted-foreground after:w-0'
+                  } after:bg-primary after:absolute after:bottom-0 after:left-0 after:h-0.5 after:transition-all after:duration-300`
                 }
-                to={path}
+                to="/login"
               >
-                {title}
+                Iniciar Sesión
               </NavLink>
             </li>
-          ))}
-          <div className="flex items-center gap-4 ml-2 pl-4 border-l border-border">
-            <button 
+          ) : (
+            <li className="flex items-center gap-4">
+              <div className="bg-secondary flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium">
+                <User size={16} className="text-primary" />
+                <span className="text-foreground/80">{user?.name}</span>
+              </div>
+              <button
+                onClick={logout}
+                className="text-muted-foreground hover:text-destructive flex cursor-pointer items-center gap-1 text-sm font-medium transition-colors"
+              >
+                <LogOut size={16} />
+                <span className="hidden sm:inline">Cerrar Sesión</span>
+              </button>
+            </li>
+          )}
+
+          <div className="border-border ml-2 flex items-center gap-4 border-l pl-4">
+            <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+              className="hover:bg-secondary text-muted-foreground hover:text-foreground cursor-pointer rounded-full p-2 transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? <MoonIcon size={20} /> : <SunIcon size={20} />}
+              {theme === 'light' ? (
+                <MoonIcon size={20} />
+              ) : (
+                <SunIcon size={20} />
+              )}
             </button>
           </div>
         </ul>

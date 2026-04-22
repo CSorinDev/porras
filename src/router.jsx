@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage'
 import Layout from './layouts/Layout'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
+import GuestRoutes from './GuestRoutes'
 
 const router = createBrowserRouter([
   {
@@ -13,12 +14,17 @@ const router = createBrowserRouter([
         Component: HomePage,
       },
       {
-        path: '/login',
-        Component: LoginPage,
-      },
-      {
-        path: '/register',
-        Component: RegisterPage,
+        Component: GuestRoutes,
+        children: [
+          {
+            path: '/login',
+            Component: LoginPage,
+          },
+          {
+            path: '/register',
+            Component: RegisterPage,
+          },
+        ],
       },
     ],
   },
