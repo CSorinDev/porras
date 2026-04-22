@@ -18,8 +18,8 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <header className="bg-background/80 backdrop-blur-md border-b border-border shadow-sm p-4 fixed top-0 left-0 w-full flex justify-between items-center z-50 transition-colors duration-300">
-      <NavLink to="/" className="text-xl font-bold tracking-tight text-primary">
+    <header className="bg-background/80 backdrop-blur-md border-b border-border shadow-sm p-4 fixed top-0 left-0 w-full flex justify-between items-center z-50 transition-colors duration-300 h-16">
+      <NavLink to="/" className="text-xl font-bold tracking-tighter text-primary">
         <h2>LOGO</h2>
       </NavLink>
       <nav>
@@ -30,7 +30,7 @@ export default function Header() {
                 className={({ isActive }) =>
                   `relative py-2 px-1 transition-colors hover:text-primary ${
                     isActive ? 'text-primary after:w-full' : 'text-muted-foreground after:w-0'
-                  } after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300`
+                  } after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 font-semibold uppercase text-sm`
                 }
                 to={path}
               >

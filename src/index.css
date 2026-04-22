@@ -40,7 +40,8 @@
   --card: #ffffff;
   --card-foreground: #0f172a;
   
-  --primary: #6366f1;
+  --primary: #884dff;
+  /* --primary: #6366f1; */
   --primary-foreground: #ffffff;
   
   --secondary: #f1f5f9;
@@ -97,7 +98,7 @@ button {
 }
 
 h1 {
-  @apply text-4xl font-bold mb-12;
+  @apply font-bold mb-12 text-primary text-[clamp(1.5rem,5dvw,3rem)];
 }
 
 .form {
@@ -105,11 +106,11 @@ h1 {
 }
 
 .form input {
-  @apply outline-0 ring-1 ring-black/30 px-2 py-1 rounded-md focus:ring-primary focus:ring-2 transition-all duration-300 mb-2
+  @apply outline-0 ring-1 ring-foreground/30 px-2 py-1 rounded-sm focus:ring-primary focus:ring-2 transition-all duration-300 mb-2
 }
 
 .form button {
-  @apply bg-primary py-1 px-2 my-4 rounded-md text-secondary cursor-pointer hover:bg-primary/80 transition-all duration-300
+  @apply bg-primary py-1 px-2 my-4 rounded-sm text-secondary cursor-pointer hover:bg-primary/80 transition-all duration-300
 }
 
 .form a {
