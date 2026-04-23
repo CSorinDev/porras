@@ -59,11 +59,7 @@ export default function Header() {
               </NavLink>
             </li>
           ) : (
-            <li className="items-center gap-4 md:flex">
-              <div className="bg-secondary flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium">
-                <User size={16} className="text-primary" />
-                <span className="text-foreground/80">{user?.name}</span>
-              </div>
+            <li className="items-center gap-4 md:flex md:flex-col md:gap-0">
               <button
                 onClick={logout}
                 className="text-muted-foreground hover:text-destructive mt-2 flex cursor-pointer items-center gap-1 text-sm font-medium transition-colors md:mt-0"
@@ -79,5 +75,4 @@ export default function Header() {
       </nav>
     </header>
   )
-
 }
