@@ -26,4 +26,4 @@ class MatchService extends HttpService {
   }
 }
 
-export default MatchService
+export default MatchService
