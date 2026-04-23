@@ -17,11 +17,15 @@ app.use(
 )
 
 import { validateCSRF } from './middleware/csrf.middleware.js'
+import seedDB from './models/seeds.js'
 
-sequelize.sync()
+await sequelize.sync({ force: true, alter: true }) 
+await seedDB()
+
 
 app.use('/api', validateCSRF, routes)
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`)
-}) 
+})
+  
