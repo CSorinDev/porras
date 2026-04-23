@@ -15,6 +15,10 @@ const Match = sequelize.define('Match', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  rules: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
   date: {
     type: DataTypes.DATE,
     allowNull: false,

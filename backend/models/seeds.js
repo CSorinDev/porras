@@ -22,12 +22,14 @@ export default async function seedDB() {
     const res = await User.create(user)
   })
 
-  const user1ID = await User.findOne({ where: { email: 'admin@example.com' } }).id
+  const user1ID = await User.findOne({ where: { email: 'admin@example.com' } })
+    .id
 
   const matches = [
     {
       home_team: 'Real Madrid',
       away_team: 'Barcelona',
+      rules: `5€: A 90'`,
       date: '2022-01-01',
       time: '12:00',
       user_id: user1ID,
@@ -35,6 +37,7 @@ export default async function seedDB() {
     {
       home_team: 'Atletico Madrid',
       away_team: 'Valencia',
+      rules: `A 90'`,
       date: '2022-01-02',
       time: '12:00',
       user_id: user1ID,
@@ -45,13 +48,14 @@ export default async function seedDB() {
     const res = await Match.create(match)
   })
 
-  const match1ID = await Match.findOne({ where: { home_team: 'Real Madrid' } }).id
+  const match1ID = await Match.findOne({ where: { home_team: 'Real Madrid' } })
+    .id
 
   const predictions = [
     {
       home_score: 2,
       away_score: 1,
-      user_id: user1ID, 
+      user_id: user1ID,
       match_id: match1ID,
     },
     {
