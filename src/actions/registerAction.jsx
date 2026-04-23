@@ -1,7 +1,9 @@
 import { useActionState } from 'react'
 import AuthService from '../services/AuthService.js'
+import useAuth from '../hooks/useAuth.jsx'
 
 export default function RegisterAction() {
+  const { login: contextLogin } = useAuth()
   const [state, registerAction, loading] = useActionState(
     handleRegisterAction,
     {
@@ -30,10 +32,24 @@ export default function RegisterAction() {
       }
     }
 
-    const res = await AuthService.register(name, email, password)
-    const data = await res.json()
-    console.log(data)
-    return data
+    try {
+      const res = await AuthService.register(name, email, password)
+      const data = await res.json()
+
+      if (res.status === 201) {
+        // Auto-login logic
+        const loginRes = await AuthService.login(email, password)
+        if (loginRes.ok) {
+          const loginData = await loginRes.json()
+          contextLogin(loginData.user)
+        }
+        return { success: true, ...data }
+      }
+
+      return { success: false, error: data.message || 'Error al registrar' }
+    } catch (error) {
+      return { success: false, error: 'Error de conexión' }
+    }
   }
 
   return { state, registerAction, loading }
