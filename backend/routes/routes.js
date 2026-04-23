@@ -28,8 +28,8 @@ routes.post('/logout', AuthController.logout)
 routes.get('/me', AuthController.me)
 
 // MATCHES
-routes.get('/matches/all', isAuthenticated, MatchController.getAll)
-routes.get('/matches/one/:id', isAuthenticated, MatchController.getOne)
+routes.get('/matches', isAuthenticated, MatchController.getAll)
+routes.get('/matches/:id', isAuthenticated, MatchController.getOne)
 routes.post('/matches/set', isAuthenticated, MatchController.setMatch)
 
 export default routes

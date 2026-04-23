@@ -1,13 +1,13 @@
 import Match from '../models/Match.js'
 
 class MatchService {
-  static async setMatch(home_team, away_team, rules, data, time) {
+  static async setMatch(home_team, away_team, rules, date, time) {
     try {
       const match = await Match.create({
         home_team,
         away_team,
         rules,
-        data,
+        date,
         time,
       })
       if (!match) return { error: 'No se pudo crear el partido' }
@@ -19,7 +19,7 @@ class MatchService {
 
   static async getOne(id) {
     try {
-      const match = Match.findOne({ where: { id } })
+      const match = await Match.findOne({ where: { id } })
       if (!match) return { error: 'Partido no encontrado' }
       return match
     } catch (error) {
@@ -29,7 +29,7 @@ class MatchService {
 
   static async getAll() {
     try {
-      const matches = Match.findAll()
+      const matches = await Match.findAll()
       if (!matches) return { error: 'No hay partidos' }
       return matches
     } catch (error) {
@@ -37,5 +37,6 @@ class MatchService {
     }
   }
 }
+
 
 export default MatchService
