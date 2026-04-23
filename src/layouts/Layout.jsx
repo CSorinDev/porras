@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router'
 import Header from './Header'
 import { useEffect } from 'react'
+import HttpService from '../services/HttpService'
 
 export default function Layout() {
   useEffect(() => {
     // Inicializamos las cookies de seguridad (CSRF) al cargar la app
-    fetch('http://localhost:3000/api/health', { credentials: 'include' })
+    HttpService.get('/health')
   }, [])
 
   return (
@@ -17,3 +18,4 @@ export default function Layout() {
     </>
   )
 }
+
